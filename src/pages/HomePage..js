@@ -6,8 +6,9 @@ import bannerPhoto3 from '../assets/photos/photo3.jpeg';
 import bannerPhoto4 from '../assets/photos/photo4.jpeg';
 import cardPhoto1 from '../assets/photos/photo5.jpg';
 import cardPhoto2 from '../assets/photos/photo6.jpg';
-import { Box, Button, Card, Divider, Grid, Link } from "@mui/material";
+import { Box, Button, Card, CardContent, Divider, Grid, Link, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Group, HelpOutline, Phone, ThumbUp } from "@mui/icons-material";
 
 
 export default function HomePage() {
@@ -132,14 +133,14 @@ export default function HomePage() {
                 </style>
                 <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                     <Button
-                        style={{ backgroundColor: '#f7971e', marginTop: 20,fontFamily: "Montserrat",paddingLeft:30,paddingRight:30 }}
+                        style={{ backgroundColor: '#f7971e', marginTop: 20, fontFamily: "Montserrat", paddingLeft: 30, paddingRight: 30 }}
                         variant="contained"
                         onClick={handleCall}
                     >
                         Hemen Arayın
                     </Button>
                     <Button
-                        style={{ backgroundColor: '#f7971e', marginTop: 20, marginLeft: 20 ,fontFamily: "Montserrat",paddingLeft:30,paddingRight:30 }}
+                        style={{ backgroundColor: '#f7971e', marginTop: 20, marginLeft: 20, fontFamily: "Montserrat", paddingLeft: 30, paddingRight: 30 }}
                         variant="contained"
                         onClick={handleWhatsApp}
                     >
@@ -181,7 +182,7 @@ export default function HomePage() {
                                     <Box sx={{ borderTop: 1, display: 'inline' }}>
                                         <Link
                                             underline="none"
-                                            onClick={()=>{navigate("/about")}}
+                                            onClick={() => { navigate("/about") }}
                                             sx={{
                                                 color: 'black',
                                                 cursor: 'pointer',
@@ -190,7 +191,7 @@ export default function HomePage() {
                                                 },
                                                 fontWeight: 'bold'
                                             }}
-                                            
+
                                         >
                                             Devamını Oku
                                         </Link>
@@ -200,6 +201,58 @@ export default function HomePage() {
                         </Card>
                     </Grid>
                 </Grid>
+            </div>
+            <div style={secondBodyStyle}>
+                <Box sx={{ flexGrow: 1, }}>
+                    <div style={{ display: 'flex' }}>
+                        <div>
+                            <Typography variant="h4" gutterBottom style={{ fontFamily: 'Montserrat' }}>
+                                Neden Pusat Vinç?
+                            </Typography>
+                        </div>
+                        <div style={{width:'70%'}}>
+                            <Divider/>
+                        </div>
+                    </div>
+                    <Grid container spacing={4} justifyContent="center">
+                        {/* En Uygun Fiyat */}
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Card sx={{ textAlign: 'center', padding: 2 }}>
+                                <Phone sx={{ fontSize: 40, color: '#f7971e' }} />
+                                <CardContent>
+                                    <Typography variant="h6">En Uygun Fiyat</Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        {/* Kaliteli ve Güvenilir Hizmet */}
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Card sx={{ textAlign: 'center', padding: 2 }}>
+                                <ThumbUp sx={{ fontSize: 40, color: '#f7971e' }} />
+                                <CardContent>
+                                    <Typography variant="h6">Kaliteli ve Güvenilir Hizmet</Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        {/* 7/24 Destek */}
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Card sx={{ textAlign: 'center', padding: 2 }}>
+                                <HelpOutline sx={{ fontSize: 40, color: '#f7971e' }} />
+                                <CardContent>
+                                    <Typography variant="h6">7/24 Destek</Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        {/* Uzman Ekip */}
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Card sx={{ textAlign: 'center', padding: 2 }}>
+                                <Group sx={{ fontSize: 40, color: '#f7971e' }} />
+                                <CardContent>
+                                    <Typography variant="h6">Uzman Ekip</Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    </Grid>
+                </Box>
             </div>
 
 
