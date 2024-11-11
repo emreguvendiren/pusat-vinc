@@ -2,11 +2,13 @@ import { Link } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import logo from '../assets/pusat_logo.png';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Header() {
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleResize = () => {
@@ -35,9 +37,9 @@ export default function Header() {
         width: '100%',
     };
     const options = [
-        { id: 1, title: 'Anasayfa', path: '/home' },
-        { id: 2, title: 'Hakkımızda', path: '/about' },
-        { id: 3, title: 'İletişim', path: '/contact' },
+        { id: 1, title: 'Anasayfa', path: '/home',function : ()=>{navigate("/")} },
+        { id: 2, title: 'Hakkımızda', path: '/about',function : ()=>{navigate("/about")} },
+        { id: 3, title: 'İletişim', path: '/contact' ,function : ()=>{navigate("/contact")}},
     ];
     const logoStyle = {
         height: '150px',
@@ -63,9 +65,10 @@ export default function Header() {
                                 color: '#f7971e',
                             },
                             fontWeight: 'bold'
+                        
                         }}
                         underline="none"
-                        onClick={() => { console.log(item.path) }}
+                        onClick={item.function}
                     >
                         {item.title}
                     </Link>
