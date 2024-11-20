@@ -6,9 +6,13 @@ import bannerPhoto3 from '../assets/photos/photo3.jpeg';
 import bannerPhoto4 from '../assets/photos/photo4.jpeg';
 import cardPhoto1 from '../assets/photos/photo5.jpg';
 import cardPhoto2 from '../assets/photos/photo6.jpg';
-import { Box, Button, Card, CardContent, Divider, Grid, Link, Typography } from "@mui/material";
+import { Avatar, Box, Button, Card, CardContent, Divider, Grid, Link, Paper, Rating, styled, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Group, HelpOutline, Phone, ThumbUp } from "@mui/icons-material";
+import { Group, HelpOutline, ThumbUp } from "@mui/icons-material";
+import CurrencyLiraIcon from '@mui/icons-material/CurrencyLira';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 
 
 export default function HomePage() {
@@ -18,7 +22,97 @@ export default function HomePage() {
     const navigate = useNavigate();
     const photos = [bannerPhoto1, bannerPhoto2, bannerPhoto3, bannerPhoto4];
 
+    const reviews = [
+        {
+            name: 'Ahmet Y.',
+            initials: 'A',
+            review: 'Halil Bey’in vinç hizmetleri sayesinde tüm ağır yüklerimizi güvenle taşıdık. Profesyonel ve hızlı bir hizmet sundular.',
+            rating: 5,
+        },
+        {
+            name: 'Mehmet D,',
+            initials: 'M',
+            review: 'Halil Bey ve ekibi, işinde son derece titiz ve güvenilir. Vinç hizmetlerinde her zaman onları tercih ediyoruz.',
+            rating: 5,
+        },
+        {
+            name: 'Ayşe K.',
+            initials: 'A',
+            review: 'Ağır makine taşımada hızlı ve sorunsuz bir deneyim yaşadık. Herkese tavsiye ederim.',
+            rating: 5,
+        },
+        {
+            name: 'Fatma Ç.',
+            initials: 'F',
+            review: 'Vinç hizmetleri konusunda uzman bir ekip. Zamanında ve güvenli bir hizmet aldık.',
+            rating: 5,
+        },
+        {
+            name: 'Cem K.',
+            initials: 'C',
+            review: 'Halil Bey’in ekibi, tüm ihtiyaçlarımızı eksiksiz karşıladı. Vinç hizmetlerinde gerçekten uzmanlar.',
+            rating: 4,
+        },
+        {
+            name: 'Emre G.',
+            initials: 'EG',
+            review: 'Halil Bey’in ekibi, tüm ihtiyaçlarımızı eksiksiz karşıladı. Vinç hizmetlerinde gerçekten uzmanlar.',
+            rating: 5,
+        },
+    ];
 
+
+    const StyledCard = styled(Paper)(({ theme }) => ({
+        padding: theme.spacing(3),
+        textAlign: 'center',
+        borderRadius: '10px',
+        boxShadow: theme.shadows[3],
+        minHeight: 250,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: '100px', // Kartlar arasındaki boşluk
+    }));
+
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    // Kartlar arasındaki boşluğu mobil cihazlarda azaltmak için:
+                    afterChange: () => {
+                        const cards = document.querySelectorAll('.slick-slide');
+                        cards.forEach((card) => {
+                            card.style.marginRight = '50px';
+                        });
+                    }
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    afterChange: () => {
+                        const cards = document.querySelectorAll('.slick-slide');
+                        cards.forEach((card) => {
+                            card.style.marginRight = '0px';
+                        });
+                    }
+                },
+            },
+        ],
+    };
 
 
 
@@ -94,14 +188,14 @@ export default function HomePage() {
             <div style={bodyStyle}>
                 <div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <div>
-                        <div style={{ fontFamily: 'Fantasy', color: 'white', fontSize: 20 }}>
+                        <div style={{ fontFamily: 'Fantasy', color: 'white', fontSize: 40 }}>
                             Ankara'da Hizmette 1 Numara
                         </div>
 
                         <div style={{ fontFamily: 'Fantasy', color: 'white', marginTop: 40, fontSize: 30 }}>
                             Ankara Hiyap Vinç Kiralama
                         </div>
-                        <div style={{ fontFamily: 'Fantasy', color: 'white', marginTop: 40 }}>
+                        <div style={{ fontFamily: 'Fantasy', color: 'white', marginTop: 40, fontSize: 20 }}>
                             Ankara Hiyap Vinç Kiralama, inşaat ve ağır iş makinesi ihtiyaçlarınızı karşılamak için güvenilir ve profesyonel bir hizmet sunmaktadır. Uzun yıllara dayanan tecrübemiz ve uzman ekibimizle, projelerinizi zamanında ve güvenli bir şekilde tamamlamanızı sağlıyoruz.
                         </div>
                     </div>
@@ -202,23 +296,21 @@ export default function HomePage() {
                     </Grid>
                 </Grid>
             </div>
-            <div style={secondBodyStyle}>
+            <div style={{ ...secondBodyStyle }}>
                 <Box sx={{ flexGrow: 1, }}>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div>
                             <Typography variant="h4" gutterBottom style={{ fontFamily: 'Montserrat' }}>
                                 Neden Pusat Vinç?
                             </Typography>
                         </div>
-                        <div style={{width:'70%'}}>
-                            <Divider/>
-                        </div>
+
                     </div>
                     <Grid container spacing={4} justifyContent="center">
                         {/* En Uygun Fiyat */}
                         <Grid item xs={12} sm={6} md={3}>
                             <Card sx={{ textAlign: 'center', padding: 2 }}>
-                                <Phone sx={{ fontSize: 40, color: '#f7971e' }} />
+                                <CurrencyLiraIcon sx={{ fontSize: 40, color: '#f7971e' }} />
                                 <CardContent>
                                     <Typography variant="h6">En Uygun Fiyat</Typography>
                                 </CardContent>
@@ -253,6 +345,27 @@ export default function HomePage() {
                         </Grid>
                     </Grid>
                 </Box>
+            </div>
+            <div style={{ margin: '0 auto', padding: '40px 0' }}>
+                <Typography variant="h4" gutterBottom style={{ fontFamily: 'Montserrat' }} align="center">
+                    Müşteri Yorumları
+                </Typography>
+                <Slider {...sliderSettings}>
+                    {reviews.map((review, index) => (
+                        <StyledCard key={index}>
+                            <Avatar sx={{ bgcolor: '#00796b', width: 60, height: 60, margin: 'auto' }}>
+                                {review.initials}
+                            </Avatar>
+                            <Typography variant="h6" sx={{ mt: 2 }}>
+                                {review.name}
+                            </Typography>
+                            <Rating value={review.rating} readOnly sx={{ mt: 1 }} />
+                            <Typography variant="body1" sx={{ mt: 2, px: 2 }}>
+                                {review.review}
+                            </Typography>
+                        </StyledCard>
+                    ))}
+                </Slider>
             </div>
 
 
