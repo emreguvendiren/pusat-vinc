@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import logo from '../assets/pusat_logo.png';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import { useNavigate } from "react-router-dom";
-
+import { isMobile } from 'react-device-detect';
 
 export default function Header() {
 
@@ -28,7 +28,7 @@ export default function Header() {
         left: 0,
         right: 0,
         paddingLeft: windowWidth > 1000 ? 100 : 5,
-        height: 150,
+        height: isMobile?100:150,
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -42,7 +42,7 @@ export default function Header() {
         { id: 3, title: 'İletişim', path: '/contact' ,function : ()=>{navigate("/contact")}},
     ];
     const logoStyle = {
-        height: '150px',
+        height: isMobile?100:150,
         width: 'auto'
     };
 

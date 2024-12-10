@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import bannerPhoto1 from '../assets/photos/photo1.jpeg';
 import bannerPhoto2 from '../assets/photos/photo2.jpeg';
 import bannerPhoto3 from '../assets/photos/photo3.jpeg';
-import bannerPhoto4 from '../assets/photos/photo4.jpeg';
+//import bannerPhoto4 from '../assets/photos/photo4.jpeg';
 import cardPhoto1 from '../assets/photos/photo5.jpg';
 import cardPhoto2 from '../assets/photos/photo6.jpg';
 import { Avatar, Box, Button, Card, CardContent, Divider, Grid, Link, Paper, Rating, styled, Typography } from "@mui/material";
@@ -13,14 +13,21 @@ import CurrencyLiraIcon from '@mui/icons-material/CurrencyLira';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-
+import { isMobile } from 'react-device-detect';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+import { Pagination, Autoplay } from "swiper/modules";
+import CopyrightIcon from '@mui/icons-material/Copyright';
 
 export default function HomePage() {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
     const [fade, setFade] = useState(true); // Geçiş durumu
     const navigate = useNavigate();
-    const photos = [bannerPhoto1, bannerPhoto2, bannerPhoto3, bannerPhoto4];
+    const photos = [bannerPhoto1, bannerPhoto2, bannerPhoto3];
+
 
     const reviews = [
         {
@@ -117,11 +124,11 @@ export default function HomePage() {
 
 
     const bodyStyle = {
-        paddingLeft: windowWidth > 1000 ? 100 : 5,
+
         paddingTop: 150,
-        height: 'calc(100vh - 150px)',
+        //height: 'calc(100vh - 150px)',
         backgroundColor: '#f7971e',
-        display: 'flex',
+
     };
 
     const secondBodyStyle = {
@@ -144,11 +151,12 @@ export default function HomePage() {
 
 
     const photoStyle = {
-        height: '50%',
+        height: '70%',
         width: '50%',
-        borderRadius: '5%',
+        borderRadius: '2%',
         transition: 'opacity 0.5s ease-in-out',
         opacity: fade ? 1 : 0,
+        maxHeight: 1000
     };
 
     useEffect(() => {
@@ -185,30 +193,29 @@ export default function HomePage() {
     return (
         <div style={{ width: '100%' }}>
 
-            <div style={bodyStyle}>
-                <div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div>
-                        <div style={{ fontFamily: 'Fantasy', color: 'white', fontSize: 40 }}>
+            <Grid container xs={12} sm={12} md={12} lg={12} xl={12} style={bodyStyle}>
+                <Grid xs={12} sm={12} md={12} lg={6} xl={6} display={isMobile ? "" : "flex"} paddingTop={isMobile ? 2 : 0} justifyContent={"center"} alignItems={"center"} item  >
+                    <Box>
+                        <Box style={{ fontFamily: 'Kanit', color: 'white' }} sx={{ fontSize: { xs: 17, sm: 16, md: 20, lg: 35, xl: 40 } }} textAlign={"center"}>
                             Ankara'da Hizmette 1 Numara
-                        </div>
-
-                        <div style={{ fontFamily: 'Fantasy', color: 'white', marginTop: 40, fontSize: 30 }}>
+                        </Box>
+                        <Box style={{ fontFamily: 'Kanit', color: 'white', marginTop: isMobile ? 13 : 40 }} sx={{ fontSize: { xs: 15, sm: 16, md: 20, lg: 30, xl: 36 } }} textAlign={"center"}>
                             Ankara Hiyap Vinç Kiralama
-                        </div>
-                        <div style={{ fontFamily: 'Fantasy', color: 'white', marginTop: 40, fontSize: 20 }}>
+                        </Box>
+                        <Box style={{ fontFamily: 'Kanit', color: 'white', marginTop: isMobile ? 13 : 40 }} sx={{ fontSize: { xs: 13, sm: 16, md: 20, lg: 25, xl: 30 } }} textAlign={"center"}>
                             Ankara Hiyap Vinç Kiralama, inşaat ve ağır iş makinesi ihtiyaçlarınızı karşılamak için güvenilir ve profesyonel bir hizmet sunmaktadır. Uzun yıllara dayanan tecrübemiz ve uzman ekibimizle, projelerinizi zamanında ve güvenli bir şekilde tamamlamanızı sağlıyoruz.
-                        </div>
-                    </div>
-                </div>
-                <div style={{ width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        </Box>
+                    </Box>
+                </Grid>
+                <Grid xs={12} sm={12} md={12} lg={6} xl={6} display={"flex"} justifyContent={"center"} alignItems={"center"} item>
                     <img src={photos[currentPhotoIndex]} alt="bannerPhoto" style={photoStyle} />
-                </div>
-            </div>
+                </Grid>
+            </Grid>
             <div style={thirdBodyStyle}>
                 <div
                     style={{
                         color: "white",
-                        fontFamily: "Montserrat",
+                        fontFamily: "Kanit",
                         fontWeight: 'bold',
                         fontSize: '24px',
                         animation: 'fadeIn 10s linear infinite'
@@ -216,25 +223,17 @@ export default function HomePage() {
                 >
                     Ankara içi Hiyap Vinç ihtiyaçlarınız için hemen teklif alın
                 </div>
-                <style>
-                    {`
-                        @keyframes fadeIn {
-                            0% { opacity: 0; transform: translateX(-100%); }
-                            50% { opacity: 1; transform: translateX(0); }
-                            100% { opacity: 0; transform: translateX(100%); }
-                        }
-                    `}
-                </style>
+
                 <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                     <Button
-                        style={{ backgroundColor: '#f7971e', marginTop: 20, fontFamily: "Montserrat", paddingLeft: 30, paddingRight: 30 }}
+                        style={{ backgroundColor: '#f7971e', marginTop: 20, fontFamily: "Kanit", paddingLeft: 30, paddingRight: 30 }}
                         variant="contained"
                         onClick={handleCall}
                     >
                         Hemen Arayın
                     </Button>
                     <Button
-                        style={{ backgroundColor: '#f7971e', marginTop: 20, marginLeft: 20, fontFamily: "Montserrat", paddingLeft: 30, paddingRight: 30 }}
+                        style={{ backgroundColor: '#f7971e', marginTop: 20, marginLeft: 20, fontFamily: "Kanit", paddingLeft: 30, paddingRight: 30 }}
                         variant="contained"
                         onClick={handleWhatsApp}
                     >
@@ -261,14 +260,14 @@ export default function HomePage() {
                     <Grid item xs={12} md={5} sm={8}>
                         <Card style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <Box sx={{ pb: 1, p: 3 }} dir="ltr">
-                                <Box sx={{ fontFamily: 'fantasy', fontSize: 24, mb: 2 }}>
+                                <Box sx={{ fontFamily: 'Kanit', fontSize: 24, mb: 2 }}>
                                     Hakkımızda
                                 </Box>
                                 <Divider />
-                                <Box sx={{ mt: 2, fontSize: 16, fontFamily: 'Montserrat' }}>
+                                <Box sx={{ mt: 2, fontSize: 16, fontFamily: 'Kanit' }}>
                                     Firmamız, ağır yük taşımacılığı ve vinç hizmetleri alanında uzun yıllara dayanan tecrübesi ile sektöründe öncü bir konumda yer almaktadır. Kurulduğumuz günden bu yana kalite, güvenlik ve müşteri memnuniyeti ilkelerini ön planda tutarak, ülke genelinde sayısız projeye imza atmanın gururunu yaşamaktayız. İnşaat, enerji, lojistik ve endüstriyel tesisler gibi çeşitli sektörlerde faaliyet gösteren müşterilerimize en güvenilir çözümleri sunmak için sürekli olarak kendimizi yeniliyor ve geliştiriyoruz.
                                 </Box>
-                                <Box sx={{ mt: 2, fontSize: 16, fontFamily: 'Montserrat' }}>
+                                <Box sx={{ mt: 2, fontSize: 16, fontFamily: 'Kanit' }}>
                                     Geniş araç filomuz ve ileri teknolojik donanımlarımız sayesinde, yüksek kapasiteli yük taşıma ve kaldırma hizmetlerimizi uluslararası standartlarda sunmaktayız. Teleskopik vinçlerden mobil vinçlere, sepetli vinçlerden ağır yük taşıma ekipmanlarına kadar farklı ihtiyaçlara yanıt verebilecek kapsamlı bir ekipman yelpazesine sahibiz. Her biri alanında uzman, eğitimli ve deneyimli ekibimizle, proje zorluklarına uygun, verimli ve güvenli çözümler sunmak için çalışıyoruz.
                                 </Box>
 
@@ -300,7 +299,7 @@ export default function HomePage() {
                 <Box sx={{ flexGrow: 1, }}>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <div>
-                            <Typography variant="h4" gutterBottom style={{ fontFamily: 'Montserrat' }}>
+                            <Typography variant="h4" gutterBottom style={{ fontFamily: 'Kanit' }}>
                                 Neden Pusat Vinç?
                             </Typography>
                         </div>
@@ -312,7 +311,7 @@ export default function HomePage() {
                             <Card sx={{ textAlign: 'center', padding: 2 }}>
                                 <CurrencyLiraIcon sx={{ fontSize: 40, color: '#f7971e' }} />
                                 <CardContent>
-                                    <Typography variant="h6">En Uygun Fiyat</Typography>
+                                    <Typography variant="h6">Uygun Fiyat</Typography>
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -321,7 +320,7 @@ export default function HomePage() {
                             <Card sx={{ textAlign: 'center', padding: 2 }}>
                                 <ThumbUp sx={{ fontSize: 40, color: '#f7971e' }} />
                                 <CardContent>
-                                    <Typography variant="h6">Kaliteli ve Güvenilir Hizmet</Typography>
+                                    <Typography variant="h6">Kaliteli  Hizmet</Typography>
                                 </CardContent>
                             </Card>
                         </Grid>
@@ -346,27 +345,75 @@ export default function HomePage() {
                     </Grid>
                 </Box>
             </div>
-            <div style={{ margin: '0 auto', padding: '40px 0' }}>
-                <Typography variant="h4" gutterBottom style={{ fontFamily: 'Montserrat' }} align="center">
+            <Box sx={{ width: "100%", margin: "0 auto", mt: 5 }}>
+                <Typography variant="h4" gutterBottom style={{ fontFamily: 'Kanit' }} align="center">
                     Müşteri Yorumları
                 </Typography>
-                <Slider {...sliderSettings}>
+                <Swiper
+                    modules={[Pagination, Autoplay]}
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    autoplay={{ delay: 3000, disableOnInteraction: false }}
+                    pagination={{ clickable: true }}
+                    breakpoints={{
+                        768: { slidesPerView: 2 }, // Orta ekranlarda 2 yorum göster
+                        1200: { slidesPerView: 3 }, // Büyük ekranlarda 3 yorum göster
+                    }}
+                >
                     {reviews.map((review, index) => (
-                        <StyledCard key={index}>
-                            <Avatar sx={{ bgcolor: '#00796b', width: 60, height: 60, margin: 'auto' }}>
-                                {review.initials}
-                            </Avatar>
-                            <Typography variant="h6" sx={{ mt: 2 }}>
-                                {review.name}
-                            </Typography>
-                            <Rating value={review.rating} readOnly sx={{ mt: 1 }} />
-                            <Typography variant="body1" sx={{ mt: 2, px: 2 }}>
-                                {review.review}
-                            </Typography>
-                        </StyledCard>
+                        <SwiperSlide key={index}>
+                            <Card
+                                sx={{
+                                    maxWidth: 650,
+                                    margin: "0 auto",
+                                    boxShadow: 3,
+                                    borderRadius: 2,
+                                    textAlign: "center",
+                                }}
+                            >
+                                <CardContent>
+                                    {/* Avatar */}
+                                    <Avatar
+                                        sx={{
+                                            bgcolor: "#1976d2",
+                                            width: 56,
+                                            height: 56,
+                                            margin: "0 auto",
+                                            mb: 2,
+                                        }}
+                                    >
+                                        {review.initials}
+                                    </Avatar>
+                                    {/* İsim */}
+                                    <Typography variant="h6">{review.name}</Typography>
+                                    {/* Yorum */}
+                                    <Typography variant="body2" color="text.secondary" sx={{ my: 2 }}>
+                                        {review.review}
+                                    </Typography>
+                                    {/* Rating */}
+                                    <Rating value={review.rating} readOnly />
+                                </CardContent>
+                            </Card>
+                        </SwiperSlide>
                     ))}
-                </Slider>
-            </div>
+                </Swiper>
+            </Box>
+            <Box
+                sx={{
+                    mt: 3,
+                    backgroundColor: "black",
+                    height: 100,
+                    color: "white",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
+            >
+                <CopyrightIcon sx={{ mr: 1 }} />
+                Emre Güvendiren
+            </Box>
+
 
 
         </div>
