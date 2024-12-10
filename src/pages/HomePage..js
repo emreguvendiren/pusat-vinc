@@ -31,8 +31,8 @@ export default function HomePage() {
 
     const reviews = [
         {
-            name: 'Ahmet Y.',
-            initials: 'A',
+            name: 'Burak K.',
+            initials: 'BK',
             review: 'Halil Bey’in vinç hizmetleri sayesinde tüm ağır yüklerimizi güvenle taşıdık. Profesyonel ve hızlı bir hizmet sundular.',
             rating: 5,
         },
@@ -43,27 +43,27 @@ export default function HomePage() {
             rating: 5,
         },
         {
-            name: 'Ayşe K.',
-            initials: 'A',
+            name: 'Yasin T.',
+            initials: 'YT',
             review: 'Ağır makine taşımada hızlı ve sorunsuz bir deneyim yaşadık. Herkese tavsiye ederim.',
             rating: 5,
         },
         {
-            name: 'Fatma Ç.',
-            initials: 'F',
+            name: 'Mert Ş.',
+            initials: 'MŞ',
             review: 'Vinç hizmetleri konusunda uzman bir ekip. Zamanında ve güvenli bir hizmet aldık.',
             rating: 5,
         },
         {
-            name: 'Cem K.',
-            initials: 'C',
+            name: 'Tunahan A.',
+            initials: 'TA',
             review: 'Halil Bey’in ekibi, tüm ihtiyaçlarımızı eksiksiz karşıladı. Vinç hizmetlerinde gerçekten uzmanlar.',
             rating: 4,
         },
         {
             name: 'Emre G.',
             initials: 'EG',
-            review: 'Halil Bey’in ekibi, tüm ihtiyaçlarımızı eksiksiz karşıladı. Vinç hizmetlerinde gerçekten uzmanlar.',
+            review: 'Halil Bey şahsi olarak ilgilendi.Teşekkürlerimi sunuyorum.',
             rating: 5,
         },
     ];
@@ -128,6 +128,7 @@ export default function HomePage() {
         paddingTop: 150,
         //height: 'calc(100vh - 150px)',
         backgroundColor: '#f7971e',
+        //paddingL
 
     };
 
@@ -152,7 +153,7 @@ export default function HomePage() {
 
     const photoStyle = {
         height: '70%',
-        width: '50%',
+        width: '70%',
         borderRadius: '2%',
         transition: 'opacity 0.5s ease-in-out',
         opacity: fade ? 1 : 0,
@@ -191,7 +192,7 @@ export default function HomePage() {
         window.open(url, '_blank');
     };
     return (
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%'}}>
 
             <Grid container xs={12} sm={12} md={12} lg={12} xl={12} style={bodyStyle}>
                 <Grid xs={12} sm={12} md={12} lg={6} xl={6} display={isMobile ? "" : "flex"} paddingTop={isMobile ? 2 : 0} justifyContent={"center"} alignItems={"center"} item  >
@@ -345,7 +346,7 @@ export default function HomePage() {
                     </Grid>
                 </Box>
             </div>
-            <Box sx={{ width: "100%", margin: "0 auto", mt: 5 }}>
+            <Box sx={{ width: "100%", margin: "0 auto", mt: 10 }}>
                 <Typography variant="h4" gutterBottom style={{ fontFamily: 'Kanit' }} align="center">
                     Müşteri Yorumları
                 </Typography>
